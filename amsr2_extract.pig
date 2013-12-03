@@ -23,9 +23,9 @@ amsr2_input = LOAD 'works/input/amsr2/csv';
 ([変換後の型]) SUBSTRING($0[カラムの番号], start[開始時点の文字列番号], end[終了時の文字列番号]) 
 使える型
 int		符号付32bit整数
-long	符号付64bit整数
-float	32bit浮動小数点
-double	64bit浮動小数点
+long		符号付64bit整数
+float		32bit浮動小数点
+double		64bit浮動小数点
 */
 --1./SUBSTRINGでの切り出しを行う
 
