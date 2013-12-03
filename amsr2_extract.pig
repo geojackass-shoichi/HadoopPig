@@ -1,10 +1,10 @@
 /*
-AS‹å‚ğ—p‚¢‚Ä’Šoˆ—‚·‚é
+ASå¥ã‚’ç”¨ã„ã¦æŠ½å‡ºå‡¦ç†ã™ã‚‹
 Using A AS B
-‚±‚Ìê‡æ“ª2rows‚ğ‘S‚Ä‚Í‹Lq‚µ‚È‚¢B
+ã“ã®å ´åˆå…ˆé ­2rowsã‚’å…¨ã¦ã¯è¨˜è¿°ã—ãªã„ã€‚
 upLeftLat, upLeftLng, upRightLat ,upRightLng, 
 lowLeftLat, lowLeftLng, lowRightLat ,lowRightLng
-‚ÍGCOM-W1 UserToolsw’è‚É€‹’‚·‚éB
+ã¯GCOM-W1 UserToolsæŒ‡å®šæ™‚ã«æº–æ‹ ã™ã‚‹ã€‚
 
 amsr2_input = LOAD 'works/input/amsr2/csv' USING PigStorage(',') AS (
 	lat,
@@ -19,15 +19,15 @@ STORE amsr2_input INTO 'works/output/amsr2/20120701asc';
 
 amsr2_input = LOAD 'works/input/amsr2/csv';
 /*
-’‹L‚ÉŠÖ‚µ‚Ä‚Íã‹L“¯—lAƒLƒƒƒXƒg‚Í
-([•ÏŠ·Œã‚ÌŒ^]) SUBSTRING($0[ƒJƒ‰ƒ€‚Ì”Ô†], start[ŠJn“_‚Ì•¶š—ñ”Ô†], end[I—¹‚Ì•¶š—ñ”Ô†]) 
-g‚¦‚éŒ^
-int		•„†•t32bit®”
-long	•„†•t64bit®”
-float	32bit•‚“®¬”“_
-double	64bit•‚“®¬”“_
+æ³¨è¨˜ã«é–¢ã—ã¦ã¯ä¸Šè¨˜åŒæ§˜ã€ã‚­ãƒ£ã‚¹ãƒˆã¯
+([å¤‰æ›å¾Œã®å‹]) SUBSTRING($0[ã‚«ãƒ©ãƒ ã®ç•ªå·], start[é–‹å§‹æ™‚ç‚¹ã®æ–‡å­—åˆ—ç•ªå·], end[çµ‚äº†æ™‚ã®æ–‡å­—åˆ—ç•ªå·]) 
+ä½¿ãˆã‚‹å‹
+int		ç¬¦å·ä»˜32bitæ•´æ•°
+long	ç¬¦å·ä»˜64bitæ•´æ•°
+float	32bitæµ®å‹•å°æ•°ç‚¹
+double	64bitæµ®å‹•å°æ•°ç‚¹
 */
---1./SUBSTRING‚Å‚ÌØ‚èo‚µ‚ğs‚¤
+--1./SUBSTRINGã§ã®åˆ‡ã‚Šå‡ºã—ã‚’è¡Œã†
 
 amsr2_extract = FOREACH amsr2_input GENERATE
 (double)	SUBSTRING($0, 0, 7) AS lat,
@@ -35,10 +35,10 @@ amsr2_extract = FOREACH amsr2_input GENERATE
 (double)	SUBSTRING($0, 1+14, 21) AS sst
 ;
 
---2./FILTER‚É‚æ‚é’Šo
+--2./FILTERã«ã‚ˆã‚‹æŠ½å‡º
 amsr2_asia = FILTER amsr2_extract BY 90.0 < lat and lat < 180.0;
 
---3./TODO@SPLIT error div
+--3./TODOã€€SPLIT error div
 
---•q‚Ì6”Ô./
+--é»’å­ã®6ç•ª./
 DUMP amsr2_asia;
