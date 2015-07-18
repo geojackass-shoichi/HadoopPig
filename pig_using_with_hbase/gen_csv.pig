@@ -1,22 +1,22 @@
-register /usr/lib/zookeeper/zookeeper-[version]-cdh[version].jar
+ï»¿register /usr/lib/zookeeper/zookeeper-[version]-cdh[version].jar
 register /usr/lib/hbase/hbase-[version]-cdh[version]-security.jar
 
 raw_data = LOAD 'hbase://{tbl_name}' USING
 org.apache.pig.backend.hadoop.hbase.HBaseStorage('fish:aji fish:saba fish:shikoiwashi fish:konoshiro fish:shirogisu', '-loadKey true') as (id, aji, saba, shikoiwashi, konoshiro, shirogisu);
 
---./Hbase‚©‚çæ“¾‚µ‚½ƒf[ƒ^‚ğƒAƒWEƒTƒoEƒVƒRƒCƒƒVEƒRƒmƒVƒEƒVƒƒMƒX‚É‚»‚ê‚¼‚ê•ª‰ğ‚·‚é 
+--./Hbaseã‹ã‚‰å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’ã‚¢ã‚¸ãƒ»ã‚µãƒãƒ»ã‚·ã‚³ã‚¤ãƒ¯ã‚·ãƒ»ã‚³ãƒã‚·ãƒ­ãƒ»ã‚·ãƒ­ã‚®ã‚¹ã«ãã‚Œãã‚Œåˆ†è§£ã™ã‚‹ 
 aji = FOREACH raw_data GENERATE id, aji;
 saba = FOREACH raw_data GENERATE id, saba;
 shikoiwashi = FOREACH raw_data GENERATE id, shikoiwashi;
 konoshiro = FOREACH raw_data GENERATE id, konoshiro;
 shirogisu = FOREACH raw_data GENERATE id, shirogisu;
 
---./o—ÍŠm”F—p
+--./å‡ºåŠ›ç¢ºèªç”¨
 --DUMP aji;
 --DESCRIBE raw_data;
 
 
---./Še‹›í‚²‚Æ‚ÉƒfƒBƒŒƒNƒgƒŠ‚ğì¬‚µ‚ÄSTORE
+--./å„é­šç¨®ã”ã¨ã«ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ä½œæˆã—ã¦STORE
 STORE raw_data INTO '{dir}/gyosyu5' USING PigStorage(',');
 STORE aji INTO '{dir}/aji' USING PigStorage(',');
 STORE shikoiwashi INTO '{dir}/shikoiwashi' USING PigStorage(',');
